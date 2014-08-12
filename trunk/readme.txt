@@ -1,4 +1,4 @@
-=== Aspose PDF Exporter ===
+﻿=== Aspose PDF Exporter ===
 Contributors: fahadadeelgmailcom
 Contributor's website: http://cloud.aspose.com/
 Tags: wp pdf export,wordpress export posts to pdf, wp export post content to pdf, aspose pdf exporter plugin, aspose cloud pdf exporter, aspose cloud storage pdf exporter, aspose cloud storage words, post to pdf, wordpress post to pdf
@@ -26,6 +26,9 @@ Aspose PDF Exporter Plugin for WordPress allows administrators to export post co
 1. Plugin configuration settings
 2. Post Page with "Aspose PDF Exporter" Option
 
+
+== Plugin Requirements ==
+- This Plugin works only with PHP version >=5.3
 
 == Frequently Asked Questions ==
 
