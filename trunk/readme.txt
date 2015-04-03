@@ -4,7 +4,7 @@ Contributor's website: http://cloud.aspose.com/
 Tags: wp pdf export,wordpress export posts to pdf, wp export post content to pdf, aspose pdf exporter plugin, aspose cloud pdf exporter, aspose cloud storage pdf exporter, aspose cloud storage words, post to pdf, wordpress post to pdf
 Requires at least: 2.8
 Tested up to: 3.9
-Stable tag: 1.0
+Stable tag: 2.0
 License: GPLv2 or later
 
 Aspose PDF Exporter exports posts into a Pdf file. Currently this plugin works as a bulk action of post / pages or of any custom post type.
@@ -43,3 +43,6 @@ No, this plugin is only for exporting posts into pdf files. For exporting posts 
 == Changelog ==
 = 1.0 =
 * This is the first version
+
+= 2.0 =
+* As soon posts/pages are exported into pdf, it will prompt to save pdf file instead of link for download file.

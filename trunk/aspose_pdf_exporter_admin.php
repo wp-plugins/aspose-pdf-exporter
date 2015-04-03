@@ -173,9 +173,30 @@ function aspose_pdf_exporter_bulk_action(){
                 wp_die( __('Error exporting post.') );
             }
 
+            global $html_filename;
+            $file_name = str_replace('.html','.pdf',$html_filename);
 
+            $upload_dir = wp_upload_dir();
+            $upload_path = $upload_dir['path'] . '/';
 
-            $sendback = add_query_arg( array('exported' => $exported, 'ids' => join(',', $post_ids) ), $sendback );
+            $file_name = $upload_path . $file_name;
+
+            $file_details = pathinfo($file_name);
+
+            if($file_details['extension'] == 'pdf') {
+                header ("Content-type: octet/stream");
+
+                header ("Content-disposition: attachment; filename=".basename($file_name).";");
+
+                header("Content-Length: ".filesize($file_name));
+
+                readfile($file_name);
+                exit;
+
+            } else {
+                echo "Invalid File!";
+            }
+
 
             break;
 
@@ -189,25 +210,6 @@ function aspose_pdf_exporter_bulk_action(){
 
     wp_redirect($sendback);
     exit();
-}
-
-add_action('admin_notices','aspose_pdf_exporter_admin_notices');
-
-function aspose_pdf_exporter_admin_notices() {
-
-    $upload_dir = wp_upload_dir();
-    $upload_path = $upload_dir['path'] . '/';
-
-    $file_name = $upload_path . 'output.pdf';
-
-    $download_path = plugin_dir_url(__FILE__) . 'aspose_pdf_exporter_download.php';
-    global $post_type, $pagenow;
-
-    if($pagenow == 'edit.php' && isset($_REQUEST['exported']) && (int) $_REQUEST['exported']) {
-        $message = sprintf( _n( 'Post exported.', '%s posts exported.', $_REQUEST['exported'] ), number_format_i18n( $_REQUEST['exported'] ) );
-        $message .='<a href="'.$download_path.'?file='.$file_name.'"> Click Here </a> to download the pdf file.';
-        echo "<div class=\"updated\"><p>{$message}</p></div>";
-    }
 }
 
 function aspose_pdf_exporter_array_builder($post_ids) {
@@ -232,10 +234,10 @@ function aspose_pdf_exporter_array_builder($post_ids) {
 }
 
 function aspose_pdf_exporter_array_to_html($post_contents){
-
+    global $html_filename;
     $upload_dir = wp_upload_dir();
     $upload_path = $upload_dir['path'] . '/';
-    $filename = 'output.html';
+    $html_filename = 'output_'.time().'.html';
 
     $output_string = <<<EOD
 <!DOCTYPE html>
@@ -259,8 +261,9 @@ EOD;
 </html>
 EOD;
 
-    file_put_contents($upload_path . $filename,$output_string);
+    @unlink($upload_path . $html_filename);
+    file_put_contents($upload_path . $html_filename,$output_string);
 
-    return $upload_path . $filename;
+    return $upload_path . $html_filename;
 }
 
