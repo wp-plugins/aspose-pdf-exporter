@@ -3,7 +3,7 @@
 Plugin Name: Aspose PDF Exporter
 Plugin URI:
 Description: Aspose Pdf Exporter is a plugin for exporting contents of posts into the pdf file.
-Version: 1.0
+Version: 2.0
 Author: Fahad Adeel
 Author URI: http://cloud.aspose.com/
 

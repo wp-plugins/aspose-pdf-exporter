@@ -38,11 +38,12 @@ AsposeApp::$outPutLocation = $upload_path;
  */
 Product::$baseProductUri = 'http://api.aspose.com/v1.1';
 
-
+global $html_filename;
+$pdf_file_name = str_replace('.html','.pdf',$html_filename);
 $folder = new Folder();
 
 $folder->uploadFile($file_name, '');
 
-$pdfDocument = new Document("output.pdf");
+$pdfDocument = new Document($pdf_file_name);
 //create PDF from HTML
-$result = $pdfDocument->CreateFromHtml("output.pdf", "output.html");
+$result = $pdfDocument->CreateFromHtml($pdf_file_name, $html_filename);
