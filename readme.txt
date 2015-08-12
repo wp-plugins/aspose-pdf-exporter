@@ -3,7 +3,7 @@ Contributors: fahadadeelgmailcom
 Contributor's website: http://cloud.aspose.com/
 Tags: wp pdf export,wordpress export posts to pdf, wp export post content to pdf, aspose pdf exporter plugin, aspose cloud pdf exporter, aspose cloud storage pdf exporter, aspose cloud storage words, post to pdf, wordpress post to pdf
 Requires at least: 2.8
-Tested up to: 3.9
+Tested up to: 4.3
 Stable tag: 2.0
 License: GPLv2 or later
 
